@@ -1,0 +1,106 @@
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* GENERAL SETTINGS */
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        to bottom,
+        #1d9688 0%,
+        #1d9688 15%,
+        #d4dbd9 15%,
+        #d4dbd9 100%
+    );
+}
+
+/* 
+ * APP
+ * BOOLZAP 
+*/
+
+.container {
+    display: flex;
+    height: 95%;
+    width: 80%;
+    min-width: 800px;
+    background: #fff;
+}
+
+/* HEADER */
+/* SIDEBAR */
+
+.sidebar {
+    display: flex;
+    height: 100%;
+    width: 35%;
+    flex-direction: column;
+    background: #000;
+}
+
+/* SIDEBAR HEADER */
+
+.sidebar-header {
+    flex-basis: 70px;
+    background: #122;
+
+}
+
+/* SIDEBAR NOTIFICATION ALERT */
+
+.notification-alert {
+    flex-basis: 80px;
+    background: #555;
+
+}
+
+/* SIDEBAR USERS */
+
+.sidebar-users {
+    flex-grow: 1;
+    background: #aaa;
+
+}
+
+/* MAIN */
+/* CHAT CONTAINER */
+
+.chat-container {
+    display: flex;
+    height: 100%;
+    width: 65%;
+    flex-direction: column;
+    background: #ddd;
+}
+
+/* CHAT HEADER */
+
+.chat-header {
+    flex-basis: 70px;
+    background: #aaa;
+
+}
+
+/* MAIN CHAT */
+
+.main-chat {
+    flex-grow: 1;
+    background: url('../img/bg/mine.jpg');
+
+}
+
+/* CHAT FOOTER */
+
+.chat-footer {
+    flex-basis: 70px;
+    background: #555;
+
+}
