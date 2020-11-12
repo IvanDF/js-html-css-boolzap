@@ -1,8 +1,8 @@
 /**
  * Boolzapp Vue
  */
-var app = new Vue({
-    el: '#app',
+const bollzap = new Vue({
+    el: '#boolzap',
     data: {
         // nostro account
         user: {

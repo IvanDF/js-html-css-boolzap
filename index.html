@@ -18,19 +18,75 @@
 <body>
 
     <!-- BOOLZAP WEB-APP -->
-    <div id="bollzap" class="container">
+    <div id="boolzap" class="container">
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
 
             <!-- SIDEBAR HEADER -->
-            <div class="sidebar-header"></div>
+            <div class="h-list-center bg-light-gray sidebar-header">
+                <a class="h-list-center left" href="#">
+                    <img class="avatar circle" src="./img/users/avatar_io.jpg" alt="User">
+                    <span> Nuovo Utente </span>
+                </a>
+                <ul class="right list-none h-list-center">
+                    <li>
+                        <a href="#">
+                            <i class="icon-light fas fa-circle-notch"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-light fas fa-comment-alt"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="icon-light fas fa-ellipsis-v"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
             <!-- SIDEBAR NOTIFICATION ALERT -->
-            <div class="notification-alert"></div>
+            <div class="h-list-center notification-alert">
+                <ul class="list-none h-list-center">
+                    <li>
+                        <i class="circle fas fa-bell-slash"></i>
+                    </li>
+                    <li>
+                        Ricevi notifiche di nuovi messaggi
+                        <a href="#"> Attiva notifiche desktop </a>
+                    </li>
+                </ul>
+            </div>
 
             <!-- SIDEBAR USERS -->
-            <div class="sidebar-users"></div>
+            <div class="sidebar-users">
+                <!-- SEARCH BAR -->
+                <div class="search">
+                    <button>
+                        <i class="icon-light fas fa-search"></i>
+                    </button>
+                    <input type="text" name="search" id="search" placeholder="Cerca o inizia una nuova chat">
+                </div>
+
+                <!-- USERS CONTAINER -->
+                <div class="users-container">
+                <ul class="list-none">
+                    <!-- LIST FROM JS -->
+                    <li v-for="(user, index) in contacts"> 
+                        <a class="h-list-center" href="#">
+                            <img class="avatar-xl circle" :src="'./img/users/avatar' + user.avatar +'.jpg'" alt="">
+                            {{ user.name }} 
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+
+
+            </div>
 
         </aside>
 
@@ -38,7 +94,7 @@
         <main class="chat-container">
 
             <!-- CHAT HEADER -->
-            <div class="chat-header"></div>
+            <div class="bg-light-gray chat-header"></div>
 
             <!-- MAIN CHAT -->
             <div class="main-chat"></div>
