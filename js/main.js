@@ -4,11 +4,16 @@
 const bollzap = new Vue({
     el: '#boolzap',
     data: {
+
+        // RESET INDEX
+        indexUser: 0,
+
         // User Account
         user: {
             name: 'Nome Utente',
             avatar: '_io'
         },
+
         // Contacts
         contacts: [
             {
@@ -95,12 +100,12 @@ const bollzap = new Vue({
                 ],
             },
         ],
-        indexUser: 0,
     },
+    // METHODS
     methods: {
         activeUser(index) {
 
-            this.indexUser = index
+            this.indexUser = index;
             
         },
     },

@@ -171,6 +171,7 @@ a {
 
  .search {
     display: flex;
+    flex-direction: row-reverse;
     position: relative;
     height: 50px;
     padding: 8px;
@@ -188,6 +189,47 @@ a {
     border-right:none;
     outline: none;
     cursor: pointer;
+}
+
+
+
+.search button::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #64b5f1;
+    transform: translate( -50%, -50% ) rotate(-90deg);
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    content: "\f060";
+    font-size: 16px;
+    opacity: 0 ;
+    transition: opacity .3s,
+                transform .5s;
+}
+
+.search input:focus + button::after {
+    opacity: 1;
+    transform:translate( -50%, -50% ) rotate(0);
+}
+
+ .search button::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    content: "\f002";
+    font-size: 16px;
+    opacity: 1;
+    transition: opacity .3s,
+                transform .5s;
+}
+
+.search input:focus + button::before {
+    opacity: 0;
+    transform: translate( -50%, -50% ) rotate(45deg)
 }
 
 .search input {
