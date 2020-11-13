@@ -23,7 +23,7 @@ const bollzap = new Vue({
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
-                        message: 'Hai portato a spasso il cane?',
+                        message: 'Hai portato a il cane?',
                         status: 'sent'
                     },
                     {
@@ -34,7 +34,7 @@ const bollzap = new Vue({
                     {
                         date: '10/01/2020 16:15:22',
                         message: 'Tutto fatto!',
-                        status: 'received'
+                        status: 'recived'
                     }
                 ],
             },
@@ -51,12 +51,12 @@ const bollzap = new Vue({
                     {
                         date: '20/03/2020 16:30:55',
                         message: 'Bene grazie! Stasera ci vediamo?',
-                        status: 'received'
+                        status: 'recived'
                     },
                     {
                         date: '20/03/2020 16:35:00',
                         message: 'Mi piacerebbe ma devo andare a fare la spesa.',
-                        status: 'received'
+                        status: 'recived'
                     }
                 ],
             },
@@ -68,7 +68,7 @@ const bollzap = new Vue({
                     {
                         date: '28/03/2020 10:10:40',
                         message: 'La Marianna va in campagna',
-                        status: 'received'
+                        status: 'recived'
                     },
                     {
                         date: '28/03/2020 10:20:10',
@@ -78,7 +78,7 @@ const bollzap = new Vue({
                     {
                         date: '28/03/2020 16:15:22',
                         message: 'Ah scusa!',
-                        status: 'received'
+                        status: 'recived'
                     }
                 ],
             },
@@ -95,7 +95,7 @@ const bollzap = new Vue({
                     {
                         date: '10/01/2020 15:50:00',
                         message: 'Si, ma preferirei andare al cinema',
-                        status: 'received'
+                        status: 'recived'
                     }
                 ],
             },

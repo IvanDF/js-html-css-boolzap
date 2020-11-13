@@ -69,11 +69,25 @@ body {
 }
 
 .icon-light {
-    color: #b1b1b1
+    color: rgba(177, 177, 177, .7);
+    transition: color .5s,
+                transform .5s;
 }
 
 .icon-dark {
-    color: #6b7376;
+    color: rgba(107, 115, 118, .7);
+    transition: color .5s,
+                transform .5s;
+}
+
+.icon-light:not(button):hover {
+    color: rgb(177, 177, 177);
+    transform: scale(1.15);
+}
+
+.icon-dark:hover {
+    color: rgb(107, 115, 118);
+    transform: scale(1.15);
 }
 
 .circle {
@@ -191,8 +205,6 @@ a {
     cursor: pointer;
 }
 
-
-
 .search button::after {
     position: absolute;
     top: 50%;
@@ -249,7 +261,6 @@ a {
     border: solid 1px rgba(150, 150, 150, .5);
 }
 
-
 /* SIDEBAR USERS */
 
 .sidebar-users {
@@ -259,12 +270,21 @@ a {
     overflow-y: auto;
 }
 
-
 /* USERS CONTAINER */
 
 .users-container {
+    position: relative;
     flex-grow: 1;
+}
+
+.users-container .users-scrollable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     background: #fff;
+    overflow-y: auto;
 }
 
 .users-container .users-list {
@@ -330,9 +350,17 @@ a {
 /* MAIN CHAT */
 
 .main-chat {
-    padding: 50px 100px;
     position: relative;
     flex-grow: 1;
+}
+
+.main-chat .chat-scrollable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 50px 100px;
     background: url('../img/bg/mine.jpg');
     overflow-y: auto;
 }
@@ -347,7 +375,7 @@ a {
     text-align: left;
 }
 
-.message-row.received .message {
+.message-row.recived .message {
     background: #fff;
 }
 
@@ -364,8 +392,11 @@ a {
     position: relative;
     display: inline-block;
     min-width: 350px;
+    max-width: 450px;
+    white-space: wrap;
     padding: 15px 15px 20px;
     border-radius: 10px;
+    overflow-wrap: break-word;
 }
 
 .message .date {

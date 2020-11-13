@@ -65,27 +65,29 @@
             <!-- SEARCH BAR -->
             <div class="search">
                 <input type="text" name="search" id="search" placeholder="Cerca o inizia una nuova chat">
-                    <button class="icon-light">
-                    </button>
+                <button class="icon-light">
+                </button>
             </div>
 
             <!-- SIDEBAR USERS -->
             <div class="sidebar-users">
                     <!-- USERS CONTAINER -->
                     <div class="users-container">
-                        <ul class="list-none">
-                            <!-- LIST FROM JS -->
-                            <li 
-                            v-for="(contact, index) in contacts"
-                            @click="activeUser(index)"
-                            :class="[ 'users-list', index == indexUser ? 'user-active' : '' ]" 
-                            > 
-                                <a class="h-list-center" href="#">
-                                    <img class="avatar-xl circle" :src="`./img/users/avatar${contact.avatar}.jpg`" :alt="contact.name">
-                                    {{ contact.name }} 
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="users-scrollable">
+                            <ul class="list-none">
+                                <!-- LIST FROM JS -->
+                                <li 
+                                v-for="(contact, index) in contacts"
+                                @click="activeUser(index)"
+                                :class="[ 'users-list', index == indexUser ? 'user-active' : '' ]" 
+                                > 
+                                    <a class="h-list-center" href="#">
+                                        <img class="avatar-xl circle" :src="`./img/users/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                                        {{ contact.name }} 
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 <!-- </div> -->
             </div>
@@ -128,14 +130,16 @@
             v-for=" (info, index) in contacts "
             v-show=" index == indexUser "
             >
-                <!-- MESSAGES - FROM JS -->
-                <div 
-                v-for=" messageInfo in info.messages "
-                :class=" `message-row ${messageInfo.status}` "
-                >
-                    <div class="message">
-                        <p>{{messageInfo.message}}</p>
-                        <span class="date">{{messageInfo.date}}</span>
+                <div class="chat-scrollable">
+                    <!-- MESSAGES - FROM JS -->
+                    <div 
+                    v-for=" messageInfo in info.messages "
+                    :class=" `message-row ${messageInfo.status}` "
+                    >
+                        <div class="message">
+                            <p>{{messageInfo.message}}</p>
+                            <span class="date">{{messageInfo.date}}</span>
+                        </div>
                     </div>
                 </div>
 
