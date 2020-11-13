@@ -27,7 +27,7 @@
             <!-- SIDEBAR HEADER -->
             <div class="h-list-center bg-light-gray sidebar-header">
                 <a class="h-list-center left" href="#">
-                    <img class="avatar circle" src="./img/users/avatar_io.jpg" alt="User">
+                    <img class="avatar circle" :src="'./img/users/avatar' + user.avatar + '.jpg'" :alt="user.name">
                     <span> Nuovo Utente </span>
                 </a>
                 <ul class="right list-none h-list-center">
@@ -72,21 +72,23 @@
 
             <!-- SIDEBAR USERS -->
             <div class="sidebar-users">
-                <div class="sidebar-users-scrollable">
                     <!-- USERS CONTAINER -->
                     <div class="users-container">
                         <ul class="list-none">
                             <!-- LIST FROM JS -->
-                            <li class="users-list" v-for="(user, index) in contacts"> 
+                            <li 
+                            v-for="(contact, index) in contacts"
+                            @click="activeUser(index)"
+                            :class="[ 'users-list', index == indexUser ? 'user-active' : '' ]" 
+                            > 
                                 <a class="h-list-center" href="#">
-                                    <img class="avatar-xl circle" :src="'./img/users/avatar' + user.avatar +'.jpg'" alt="">
-                                    {{ user.name }} 
+                                    <img class="avatar-xl circle" :src="`./img/users/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                                    {{ contact.name }} 
                                 </a>
                             </li>
-                            <!-- END LIST FROM JS -->
                         </ul>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
 
         </aside>
@@ -97,9 +99,9 @@
             <!-- CHAT HEADER -->
             <div class="h-list-center bg-light-gray chat-header">
                 <a class="h-list-center" href="#">
-                    <img class="avatar circle" src="./img/users/avatar_1.jpg" alt="User">
+                    <img class="avatar circle" :src="`./img/users/avatar${contacts[indexUser].avatar}.jpg`" alt="User">
                     <span class="user-info">
-                        <p class="name"> Michele </p>
+                        <p class="name"> {{contacts[indexUser].name}} </p>
                         <p class="access"> Ultimo accesso oggi alle 10.35 </p>
                     </span>
                 </a>
@@ -124,8 +126,14 @@
 
             <!-- MAIN CHAT -->
             <div class="main-chat">
-                <div class="main-chat-scrollable">
+                <!-- MESSAGES - FROM JS -->
+                <div class="message-row sent">
+                    <div class="message sent">
+                        <p>{{contacts[indexUser].messages}}</p>
+                        <span class="date">20/03/2020 16:30:00</span>
+                    </div>
                 </div>
+
             </div>
 
             <!-- CHAT FOOTER -->

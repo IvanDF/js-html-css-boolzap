@@ -4,12 +4,12 @@
 const bollzap = new Vue({
     el: '#boolzap',
     data: {
-        // nostro account
+        // User Account
         user: {
             name: 'Nome Utente',
             avatar: '_io'
         },
-        // Elenco contatti
+        // Contacts
         contacts: [
             {
                 name: 'Michele',
@@ -94,7 +94,16 @@ const bollzap = new Vue({
                     }
                 ],
             },
-        ]
+        ],
+        indexUser: 0,
     },
-    methods: {}
+    methods: {
+        activeUser(index){
+
+            this.indexUser = index
+
+            console.log(this.indexUser);
+            
+        },
+    },
 });
