@@ -125,12 +125,18 @@
             </div>
 
             <!-- MAIN CHAT -->
-            <div class="main-chat">
+            <div class="main-chat"
+            v-for="(el, i) in contacts"
+            v-show=" i == indexUser "
+            >
                 <!-- MESSAGES - FROM JS -->
-                <div class="message-row sent">
-                    <div class="message sent">
-                        <p>{{contacts[indexUser].messages}}</p>
-                        <span class="date">20/03/2020 16:30:00</span>
+                <div 
+                v-for="e in el.messages"
+                :class="`message-row ${e.status}`"
+                >
+                    <div class="message">
+                        <p>{{e.message}}</p>
+                        <span class="date">{{e.date}}</span>
                     </div>
                 </div>
 

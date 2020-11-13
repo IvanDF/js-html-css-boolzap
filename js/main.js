@@ -98,7 +98,7 @@ const bollzap = new Vue({
         indexUser: 0,
     },
     methods: {
-        activeUser(index){
+        activeUser(index) {
 
             this.indexUser = index
 
