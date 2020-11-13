@@ -187,6 +187,7 @@ a {
     border-bottom-left-radius: 3px;
     border-right:none;
     outline: none;
+    cursor: pointer;
 }
 
 .search input {
@@ -321,7 +322,7 @@ a {
     position: relative;
     display: inline-block;
     min-width: 350px;
-    padding: 15px;
+    padding: 15px 15px 20px;
     border-radius: 10px;
 }
 
