@@ -121,6 +121,8 @@ const bollzap = new Vue({
                     message: this.messageSent,
                     status: 'sent'
                 })
+                let sent = ("./audio/sent.wav")
+                messageAudio(sent)
 
                 // RESET INPUT TEXT
                 this.messageSent = '';
@@ -132,10 +134,17 @@ const bollzap = new Vue({
                         message: 'oke',
                         status: 'recived'
                     })
+                    let recived = ("./audio/recived.wav")
+                    messageAudio(recived)    
                     clearInterval(autoReply)
                 }, 1000);
-            }
 
+                // ADD SOUND MESSAGE
+                function messageAudio( sent ) {
+                    const snd = new Audio(sent);
+                    snd.play();
+                }
+            }
         }
     },
 }); 
