@@ -7,6 +7,8 @@ const bollzap = new Vue({
 
         // RESET INDEX
         indexUser: 0,
+        // RESET MESSAGES SENT
+        messageSent: null,
 
         // User Account
         user: {
@@ -105,8 +107,22 @@ const bollzap = new Vue({
     methods: {
         activeUser(index) {
 
+            // SET IDEXUSER DYNAMICALLY ON CLICK
             this.indexUser = index;
             
         },
+        
+        sendMessage() {
+            
+            this.contacts[this.indexUser].messages.push({
+                date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
+                message: this.messageSent,
+                status: 'sent'
+            })
+
+            // RESET INPUT TEXT
+            this.messageSent = '';
+            
+        }
     },
-});
+}); 

@@ -403,6 +403,10 @@ a {
     overflow-wrap: break-word;
 }
 
+.message::first-letter {
+    text-transform: uppercase;
+}
+
 .message .date {
     position: absolute;
     right: 5px;
@@ -432,10 +436,6 @@ a {
     outline: none;
     transition: border-color .2s;
     font-size: 18px;
-}
-
-.chat-footer input::first-letter {
-    text-transform: uppercase;
 }
 
 .chat-footer input:focus {

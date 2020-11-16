@@ -100,7 +100,8 @@
             <!-- CHAT HEADER -->
             <div class="h-list-center bg-light-gray chat-header">
                 <a class="h-list-center" href="#">
-                    <img class="avatar circle" :src="`./img/users/avatar${contacts[indexUser].avatar}.jpg`" alt="User">
+                    <img class="avatar circle" 
+                         :src="`./img/users/avatar${contacts[indexUser].avatar}.jpg`" :alt="contacts[indexUser].name">
                     <span class="user-info">
                         <p class="name"> {{contacts[indexUser].name}} </p>
                         <p class="access"> Ultimo accesso oggi alle 10.35 </p>
@@ -126,21 +127,19 @@
             </div>
 
             <!-- MAIN CHAT -->
-            <div class=" main-chat "
-            v-for=" (info, index) in contacts "
-            v-show=" index == indexUser "
-            >
+            <div class=" main-chat ">
                 <div class="chat-scrollable">
+
                     <!-- MESSAGES - FROM JS -->
-                    <div 
-                    v-for=" messageInfo in info.messages "
-                    :class=" `message-row ${messageInfo.status}` "
+                    <div v-for=" messageInfo in contacts[indexUser].messages "
+                         :class=" `message-row ${messageInfo.status}` "
                     >
                         <div class="message">
-                            <p>{{messageInfo.message}}</p>
-                            <span class="date">{{messageInfo.date}}</span>
+                            <p>{{ messageInfo.message }}</p>
+                            <span class="date">{{ messageInfo.date }}</span>
                         </div>
                     </div>
+
                 </div>
 
             </div>
@@ -150,7 +149,15 @@
                 <a href="#">
                     <i class="icon-dark icon-big far fa-smile"></i>
                 </a>
-                <input type="text" name="message" id="message" placeholder="Scrivi un messaggio">
+                <input type="text" 
+                        name="message" 
+                        id="message" 
+                        autofocus
+                        placeholder="Scrivi un messaggio"
+                        @keyup.enter="sendMessage"
+                        v-model.trim="messageSent"
+
+                        >
                 <a href="#">
                     <i class="icon-dark icon-big fas fa-microphone"></i>
                 </a>
@@ -159,7 +166,11 @@
         </main>
 
     </div>
-    
+
+
+    <!-- DAY JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/dayjs.min.js"></script>
+    <!-- MAIN STYLE -->
     <script src="./js/main.js"></script>
 </body>
 </html>
