@@ -370,7 +370,9 @@ a {
 }
 
 .main-chat .fix-bottom-scrollable {
+    min-height: 100%;
     display: flex;
+    padding-bottom: 25px;
     flex-direction: column;
     justify-content: flex-end;
 }
@@ -525,8 +527,12 @@ a {
 
     /* MAIN CHAT */
 
-
     .main-chat .chat-scrollable {
-        padding: 25px 50px;
+        padding: 25px 25px 0;
     }
+
+    .main-chat .fix-bottom-scrollable {
+        margin-bottom: 35px;
+    }
+
 }

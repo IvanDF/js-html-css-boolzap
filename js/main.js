@@ -125,6 +125,9 @@ const bollzap = new Vue({
                     message: this.messageSent,
                     status: 'sent'
                 })
+                
+                let elem = document.getElementsByClassName('chat-scrollable')[0];
+                elem.scrollTop = elem.scrollHeight;
 
                 // SENT AUDIO
                 let sent = ("./audio/sent.wav")
@@ -148,6 +151,9 @@ const bollzap = new Vue({
                     let recived = ("./audio/recived.wav")
                     messageAudio(recived) 
 
+                    let elem = document.getElementsByClassName('chat-scrollable')[0];
+                    elem.scrollTop = elem.scrollHeight;
+
                     clearInterval(autoReply)
                 }, 1000);
 
@@ -156,6 +162,7 @@ const bollzap = new Vue({
                     const snd = new Audio(sent);
                     snd.play();
                 }
+                
             }
         },
     },
