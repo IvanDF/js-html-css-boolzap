@@ -122,7 +122,17 @@ const bollzap = new Vue({
 
             // RESET INPUT TEXT
             this.messageSent = '';
-            
+
+            // AUTO REPLY FUNCTION
+            let autoReply = setInterval(() => {
+                this.contacts[this.indexUser].messages.push({
+                    date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
+                    message: 'oke',
+                    status: 'recived'
+                })
+                clearInterval(autoReply)
+            }, 1000);
+
         }
     },
 }); 
