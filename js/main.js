@@ -8,7 +8,7 @@ const bollzap = new Vue({
         // RESET INDEX
         indexUser: 0,
         // RESET MESSAGES SENT
-        messageSent: null,
+        messageSent: '',
 
         // User Account
         user: {
@@ -111,27 +111,30 @@ const bollzap = new Vue({
             this.indexUser = index;
             
         },
-        
+        // SEND MESSAGES & RECIVE AUTO REPLY
         sendMessage() {
             
-            this.contacts[this.indexUser].messages.push({
-                date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
-                message: this.messageSent,
-                status: 'sent'
-            })
+            if (this.messageSent !== '') {
 
-            // RESET INPUT TEXT
-            this.messageSent = '';
-
-            // AUTO REPLY FUNCTION
-            let autoReply = setInterval(() => {
                 this.contacts[this.indexUser].messages.push({
                     date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
-                    message: 'oke',
-                    status: 'recived'
+                    message: this.messageSent,
+                    status: 'sent'
                 })
-                clearInterval(autoReply)
-            }, 1000);
+
+                // RESET INPUT TEXT
+                this.messageSent = '';
+    
+                // AUTO REPLY FUNCTION
+                let autoReply = setInterval(() => {
+                    this.contacts[this.indexUser].messages.push({
+                        date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
+                        message: 'oke',
+                        status: 'recived'
+                    })
+                    clearInterval(autoReply)
+                }, 1000);
+            }
 
         }
     },

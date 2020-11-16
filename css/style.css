@@ -380,6 +380,8 @@ a {
 }
 
 .message-row.recived .message {
+    border-radius: 10px;
+    border-top-left-radius:0;
     background: #fff;
 }
 
@@ -388,6 +390,8 @@ a {
 }
 
 .message-row.sent .message {
+    border-radius: 10px;
+    border-top-right-radius:0;
     text-align: left;
     background: #d6faba;
 }
@@ -399,8 +403,48 @@ a {
     max-width: 450px;
     white-space: wrap;
     padding: 15px 15px 20px;
-    border-radius: 10px;
     overflow-wrap: break-word;
+}
+
+.message-row.recived .message::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 0px solid transparent;
+    border-right: 10px solid #fff;
+    border-bottom: 15px solid transparent;
+}
+
+.message-row.sent .message::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-top: 0px solid transparent;
+    border-left: 10px solid #d6faba;
+    border-bottom: 15px solid transparent;
+}
+
+.message i {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    opacity: 0;
+    font-size: 12px;
+    color: rgba(0, 0, 0, .3);
+    cursor: pointer;
+    transition: opacity .5s,
+                top .5s;
+}
+
+.message:hover i {
+    opacity: 1;
+    top: 5px;
 }
 
 .message::first-letter {
