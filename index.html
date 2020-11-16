@@ -135,7 +135,7 @@
                         <div v-for=" messageInfo in contacts[indexUser].messages "
                              :class=" `message-row ${messageInfo.status}` "
                         >
-                            <div class="message">
+                            <div class="message" ref="message">
                                 <p>{{ messageInfo.message }}</p>
                                 <span class="date">{{ messageInfo.date }}</span>
                                 <i class="fas fa-chevron-down"></i>

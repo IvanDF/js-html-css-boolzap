@@ -126,12 +126,11 @@ const bollzap = new Vue({
                     status: 'sent'
                 })
                 
-                let elem = document.getElementsByClassName('chat-scrollable')[0];
-                elem.scrollTop = elem.scrollHeight;
+                this.scrollDown();
 
                 // SENT AUDIO
                 let sent = ("./audio/sent.wav")
-                messageAudio(sent)
+                this.messageAudio(sent)
 
                 // RESET INPUT TEXT
                 this.messageSent = '';
@@ -147,23 +146,23 @@ const bollzap = new Vue({
                     // ADD LAST ACCESS
                     this.contacts[this.indexUser].lastAccess = dayjs().format('HH.mm');
 
+                    this.scrollDown();
+
                     // RECIVED AUDIO
                     let recived = ("./audio/recived.wav")
-                    messageAudio(recived) 
-
-                    let elem = document.getElementsByClassName('chat-scrollable')[0];
-                    elem.scrollTop = elem.scrollHeight;
+                    this.messageAudio(recived) 
 
                     clearInterval(autoReply)
                 }, 1000);
-
-                // ADD SOUND MESSAGE
-                function messageAudio( sent ) {
-                    const snd = new Audio(sent);
-                    snd.play();
-                }
-                
             }
         },
+        messageAudio( sent ) {
+            const snd = new Audio(sent);
+            return snd.play();
+        },
+        scrollDown() {
+            let elem = document.getElementsByClassName('chat-scrollable')[0];
+            elem.scrollTop = elem.scrollHeight;
+        }
     },
 });
