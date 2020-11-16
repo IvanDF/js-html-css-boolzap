@@ -22,6 +22,7 @@ const bollzap = new Vue({
                 name: 'Michele',
                 avatar: '_1',
                 visible: true,
+                lastAccess: 10.35,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -44,6 +45,7 @@ const bollzap = new Vue({
                 name: 'Fabio',
                 avatar: '_2',
                 visible: true,
+                lastAccess: 10.35,
                 messages: [
                     {
                         date: '20/03/2020 16:30:00',
@@ -66,6 +68,7 @@ const bollzap = new Vue({
                 name: 'Samuele',
                 avatar: '_3',
                 visible: true,
+                lastAccess: 10.35,
                 messages: [
                     {
                         date: '28/03/2020 10:10:40',
@@ -88,6 +91,7 @@ const bollzap = new Vue({
                 name: 'Luisa',
                 avatar: '_4',
                 visible: true,
+                lastAccess: 10.35,
                 messages: [
                     {
                         date: '10/01/2020 15:30:55',
@@ -121,6 +125,8 @@ const bollzap = new Vue({
                     message: this.messageSent,
                     status: 'sent'
                 })
+
+                // SENT AUDIO
                 let sent = ("./audio/sent.wav")
                 messageAudio(sent)
 
@@ -132,10 +138,16 @@ const bollzap = new Vue({
                     this.contacts[this.indexUser].messages.push({
                         date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
                         message: 'oke',
-                        status: 'recived'
+                        status: 'recived',
                     })
+
+                    // ADD LAST ACCESS
+                    this.contacts[this.indexUser].lastAccess = dayjs().format('HH.mm');
+
+                    // RECIVED AUDIO
                     let recived = ("./audio/recived.wav")
-                    messageAudio(recived)    
+                    messageAudio(recived) 
+
                     clearInterval(autoReply)
                 }, 1000);
 
@@ -145,6 +157,6 @@ const bollzap = new Vue({
                     snd.play();
                 }
             }
-        }
+        },
     },
-}); 
+});
