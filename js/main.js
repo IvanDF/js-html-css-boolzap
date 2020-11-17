@@ -183,15 +183,12 @@ const bollzap = new Vue({
             },
         ],
     },
-    
     // METHODS
     methods: {
         activeUser(index) {
 
             // SET IDEXUSER DYNAMICALLY ON CLICK
             this.indexUser = index;
-
-            
             
         },
         // SEND MESSAGES & RECIVE AUTO REPLY

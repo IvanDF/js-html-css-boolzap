@@ -95,8 +95,8 @@
                                             <p class="message-preview" 
                                                 v-for="(messageInfo, i) in contacts[index].messages"
                                                 > 
-                                                <span v-if=" i == contacts[index].messages.length -1 "> 
-                                                    {{ messageInfo.message }} 
+                                                <span id="ciao" v-if=" i == contacts[index].messages.length - 1 "> 
+                                                    {{ messageInfo.message }} ...
                                                 </span>
                                             </p>
                                             <span class="last-access"> {{ contact.lastAccess }} </span>
