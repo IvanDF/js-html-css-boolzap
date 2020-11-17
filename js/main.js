@@ -9,6 +9,8 @@ const bollzap = new Vue({
         indexUser: 0,
         // RESET MESSAGES SENT
         messageSent: '',
+        // FILTER USERS
+        filter: '',
 
         // User Account
         user: {
@@ -105,6 +107,78 @@ const bollzap = new Vue({
                     }
                 ],
             },
+            {
+                name: 'Lucio',
+                avatar: '_5',
+                visible: true,
+                lastAccess: 10.35,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Lo sai che ha aperto una nuova pizzeria?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Si, ma preferirei andare al cinema',
+                        status: 'recived'
+                    }
+                ],
+            },
+            {
+                name: 'Luciano',
+                avatar: '_6',
+                visible: true,
+                lastAccess: 10.35,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Lo sai che ha aperto una nuova pizzeria?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Si, ma preferirei andare al cinema',
+                        status: 'recived'
+                    }
+                ],
+            },
+            {
+                name: 'Ajeje',
+                avatar: '_7',
+                visible: true,
+                lastAccess: 10.35,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Lo sai che ha aperto una nuova pizzeria?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Si, ma preferirei andare al cinema',
+                        status: 'recived'
+                    }
+                ],
+            },
+            {
+                name: 'Brambilla',
+                avatar: '_8',
+                visible: true,
+                lastAccess: 10.35,
+                messages: [
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'Lo sai che ha aperto una nuova pizzeria?',
+                        status: 'sent'
+                    },
+                    {
+                        date: '10/01/2020 15:50:00',
+                        message: 'Si, ma preferirei andare al cinema',
+                        status: 'recived'
+                    }
+                ],
+            },
         ],
     },
     // METHODS
@@ -136,7 +210,7 @@ const bollzap = new Vue({
                 this.messageSent = '';
     
                 // AUTO REPLY FUNCTION
-                let autoReply = setInterval(() => {
+                setTimeout(() => {
                     this.contacts[this.indexUser].messages.push({
                         date: dayjs().format( 'DD/MM/YYYY HH:mm:ss' ),
                         message: 'oke',
@@ -152,7 +226,6 @@ const bollzap = new Vue({
                     let recived = ("./audio/recived.wav")
                     this.messageAudio(recived) 
 
-                    clearInterval(autoReply)
                 }, 1000);
             }
         },
@@ -161,8 +234,21 @@ const bollzap = new Vue({
             return snd.play();
         },
         scrollDown() {
-            let elem = document.getElementsByClassName('chat-scrollable')[0];
+            const elem = document.getElementsByClassName('chat-scrollable')[0];
             elem.scrollTop = elem.scrollHeight;
+        },
+
+        // USERS FILTER
+        keymonitor() {
+
+            this.contacts.forEach( el => {
+                if ( el.name.includes(this.filter) ) {
+                    el.visible = true
+                } else {
+                    el.visible = false
+                }
+            });
+        
         }
     },
 });

@@ -64,7 +64,13 @@
 
             <!-- SEARCH BAR -->
             <div class="search">
-                <input type="text" name="search" id="search" placeholder="Cerca o inizia una nuova chat">
+                <input type="text" 
+                        name="search" 
+                        id="search" 
+                        placeholder="Cerca o inizia una nuova chat"
+                        v-model="filter"
+                        @keyup="keymonitor"
+                >
                 <button class="icon-light">
                 </button>
             </div>
@@ -78,6 +84,7 @@
                                 <!-- LIST FROM JS -->
                                 <li 
                                 v-for="(contact, index) in contacts"
+                                v-show="contact.visible == true"
                                 @click="activeUser(index)"
                                 :class="[ 'users-list', index == indexUser ? 'user-active' : '' ]" 
                                 > 
@@ -143,7 +150,7 @@
                         </div>
 
                     </div>
-                </div>4
+                </div>
             </div>
 
             <!-- CHAT FOOTER -->
