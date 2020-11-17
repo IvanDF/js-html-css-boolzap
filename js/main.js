@@ -256,9 +256,7 @@ const bollzap = new Vue({
         
         },
         lastMessage(index) {
-
             return (this.contacts[index].messages.slice(-1).pop().message);
-
         },
     },
 });

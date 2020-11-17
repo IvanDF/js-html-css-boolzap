@@ -85,7 +85,7 @@
                                 <li 
                                 v-for="(contact, index) in contacts"
                                 v-show="contact.visible == true"
-                                @click="delete(index)"
+                                @click="activeUser(index)"
                                 :class="[ 'users-list', index == indexUser ? 'user-active' : '' ]" 
                                 > 
                                     <a class="h-list-center" href="#">
