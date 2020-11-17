@@ -310,10 +310,13 @@ a {
 }
 
 .users-container .users-list .message-preview {
-    width: 60%;
     font-size: 12px;
     width: 100%;
     color: rgba(0, 0, 0, .5);
+    white-space: nowrap;  
+    overflow: hidden;
+    width: 60%;
+    text-overflow: ellipsis;
 }
 
 .users-container .users-list .last-access {
@@ -558,3 +561,4 @@ a {
     }
 
 }
+

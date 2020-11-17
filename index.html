@@ -92,13 +92,14 @@
                                         <img class="avatar-xl circle" :src="`./img/users/avatar${contact.avatar}.jpg`" :alt="contact.name">
                                         <span class="contact-info">
                                             <p> {{ contact.name }} </p>
-                                            <p class="message-preview" 
+                                            <p class="message-preview"> {{ lastMessage(index) }} </p>
+                                            <!-- <p class="message-preview" 
                                                 v-for="(messageInfo, i) in contacts[index].messages"
                                                 > 
-                                                <span id="ciao" v-if=" i == contacts[index].messages.length - 1 "> 
-                                                    {{ messageInfo.message }} ...
+                                                <span class="ciao" v-show=" index == contacts[index].messages.length - 1 "> 
+                                                    {{ messageInfo.message }}
                                                 </span>
-                                            </p>
+                                            </p> -->
                                             <span class="last-access"> {{ contact.lastAccess }} </span>
                                         </span>
                                     </a>

@@ -12,8 +12,6 @@ const bollzap = new Vue({
         // FILTER USERS
         filter: '',
 
-        lastMessage: '',
-
         // User Account
         user: {
             name: 'Nome Utente',
@@ -183,6 +181,7 @@ const bollzap = new Vue({
             },
         ],
     },
+    
     // METHODS
     methods: {
         activeUser(index) {
@@ -220,7 +219,7 @@ const bollzap = new Vue({
                         message: 'oke',
                         status: 'recived',
                     })
-                    
+
                     // ADD LAST ACCESS
                     this.contacts[this.indexUser].lastAccess = dayjs().format('HH.mm');
 
@@ -233,7 +232,6 @@ const bollzap = new Vue({
                     this.messageAudio(recived) 
 
                 }, 1000);
-                
             }
         },
         messageAudio( sent ) {
@@ -255,6 +253,12 @@ const bollzap = new Vue({
                     el.visible = false
                 }
             });
+        
+        },
+        lastMessage(index) {
+
+            return (this.contacts[index].messages.slice(-1).pop().message);
+
         },
     },
 });
