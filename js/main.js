@@ -244,10 +244,10 @@ const bollzap = new Vue({
         },
 
         // USERS FILTER
-        keymonitor() {
+        searchUser() {
 
             this.contacts.forEach( el => {
-                if ( el.name.includes(this.filter) ) {
+                if ( el.name.toLowerCase().includes(this.filter.toLowerCase()) ) {
                     el.visible = true
                 } else {
                     el.visible = false

@@ -69,7 +69,7 @@
                         id="search" 
                         placeholder="Cerca o inizia una nuova chat"
                         v-model="filter"
-                        @keyup="keymonitor"
+                        @keyup="searchUser"
                 >
                 <button class="icon-light">
                 </button>
@@ -85,7 +85,7 @@
                                 <li 
                                 v-for="(contact, index) in contacts"
                                 v-show="contact.visible == true"
-                                @click="activeUser(index)"
+                                @click="delete(index)"
                                 :class="[ 'users-list', index == indexUser ? 'user-active' : '' ]" 
                                 > 
                                     <a class="h-list-center" href="#">
