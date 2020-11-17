@@ -12,6 +12,8 @@ const bollzap = new Vue({
         // FILTER USERS
         filter: '',
 
+        lastMessage: '',
+
         // User Account
         user: {
             name: 'Nome Utente',
@@ -181,12 +183,15 @@ const bollzap = new Vue({
             },
         ],
     },
+    
     // METHODS
     methods: {
         activeUser(index) {
 
             // SET IDEXUSER DYNAMICALLY ON CLICK
             this.indexUser = index;
+
+            
             
         },
         // SEND MESSAGES & RECIVE AUTO REPLY
@@ -200,7 +205,9 @@ const bollzap = new Vue({
                     status: 'sent'
                 })
                 
-                this.scrollDown();
+                setTimeout(() => {
+                    this.scrollDown();
+                }, 50)
 
                 // SENT AUDIO
                 let sent = ("./audio/sent.wav")
@@ -216,17 +223,20 @@ const bollzap = new Vue({
                         message: 'oke',
                         status: 'recived',
                     })
-
+                    
                     // ADD LAST ACCESS
                     this.contacts[this.indexUser].lastAccess = dayjs().format('HH.mm');
 
-                    this.scrollDown();
+                    setTimeout(() => {
+                        this.scrollDown();
+                    }, 50)
 
                     // RECIVED AUDIO
                     let recived = ("./audio/recived.wav")
                     this.messageAudio(recived) 
 
                 }, 1000);
+                
             }
         },
         messageAudio( sent ) {
@@ -248,7 +258,6 @@ const bollzap = new Vue({
                     el.visible = false
                 }
             });
-        
-        }
+        },
     },
 });
