@@ -93,13 +93,6 @@
                                         <span class="contact-info">
                                             <p> {{ contact.name }} </p>
                                             <p class="message-preview"> {{ lastMessage(index) }} </p>
-                                            <!-- <p class="message-preview" 
-                                                v-for="(messageInfo, i) in contacts[index].messages"
-                                                > 
-                                                <span class="ciao" v-show=" index == contacts[index].messages.length - 1 "> 
-                                                    {{ messageInfo.message }}
-                                                </span>
-                                            </p> -->
                                             <span class="last-access"> {{ contact.lastAccess }} </span>
                                         </span>
                                     </a>
