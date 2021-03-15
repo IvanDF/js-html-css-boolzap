@@ -4,6 +4,8 @@
 const bollzap = new Vue({
     el: '#boolzap',
     data: {
+        // dark mode
+        darkMode: false,
 
         // RESET INDEX
         indexUser: 0,

@@ -13,13 +13,15 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'/>
     <!-- MAIN STLE -->
     <link rel="stylesheet" href="./css/style.css">
+    <!-- DARK MODE -->
+    <link rel="stylesheet" href="./css/dark-mode.css">
     <!-- VUE / dev. script -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 </head>
 <body>
 
     <!-- BOOLZAP WEB-APP -->
-    <div id="boolzap" class="container">
+    <div id="boolzap" :class="['container', darkMode ? 'dark-mode' : '']">
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
@@ -44,6 +46,11 @@
                     <li>
                         <a href="#">
                             <i class="icon-light icon-medium fas fa-ellipsis-v"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" @click="darkMode = !darkMode">
+                            <i class="icon-light icon-medium fas fa-adjust"></i>
                         </a>
                     </li>
                 </ul>
@@ -168,16 +175,13 @@
                         placeholder="Scrivi un messaggio"
                         @keyup.enter="sendMessage"
                         v-model.trim="messageSent"
-
                         >
                 <a href="#">
                     <i class="icon-dark icon-big fas fa-microphone"></i>
                 </a>
             </div>
         </main>
-
     </div>
-
 
     <!-- DAY JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/dayjs.min.js"></script>

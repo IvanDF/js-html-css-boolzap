@@ -1,0 +1,130 @@
+
+.dark-mode .users-list {
+    background:#3f4241;
+}
+
+.dark-mode .user-active {
+    background:rgb(121, 121, 121);
+}
+
+.dark-mode .user-active a {
+    color:#000;
+}
+
+.dark-mode .users-list:hover p {
+    color:#000;
+}
+
+.dark-mode .users-list p.message-preview {
+    color:rgba(255, 255, 255, .5);
+}
+
+.dark-mode .users-list:hover p.message-preview {
+    color:rgba(255, 255, 255, .5);
+}
+
+.dark-mode .users-container .users-list {
+    border-bottom: solid 1px rgba(121, 121, 121, .2);
+}
+
+.dark-mode .users-container .users-list a, 
+.dark-mode .users-container .users-list p,
+.dark-mode .users-container .users-list .last-access {
+    color: #fff;
+}
+
+.dark-mode .users-container .users-list:hover {
+    background: #808080;
+}
+
+.dark-mode .bg-light-gray {
+    background:#3f4241;
+}
+
+/* PLACEHOLDER */
+
+.dark-mode ::placeholder {
+    color: rgba(255, 255, 255, .5);
+}
+
+.dark-mode .users-scrollable {
+    background: #3f4241;
+}
+
+.dark-mode .chat-footer {
+    background: #4f5553;
+}
+
+.dark-mode .chat-footer ::placeholder {
+    color: rgba(53, 53, 53, 0.5);
+}
+
+
+.dark-mode .chat-footer i {
+    color: #b1b1b1;
+}
+
+.dark-mode .chat-container {
+    border-left: solid 1.5px #3f4241;
+}
+
+/* TYPOGRAPHY */
+
+.dark-mode a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* SIDEBAR NOTIFICATION ALERT */
+
+.dark-mode .notification-alert {
+    background: #518da8;
+}
+
+.dark-mode .notification-alert ul i {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background: #fff;
+    text-align: center;
+    color: #518da8;
+    margin-right: 10px;
+} 
+
+.dark-mode .notification-alert ul li a {
+    color: #fff;
+}
+
+/* SEARCH BAR */
+
+.dark-mode .search {
+    background: #3f4241;
+}
+
+
+.dark-mode .search button {
+    border: solid 1px rgba(150, 150, 150, .15);
+}
+
+.dark-mode .search button::after {
+    color: #518da8;
+}
+
+.dark-mode .message-row.recived .message {
+    background: #3f4241;
+    color: #fff;
+}
+
+.message-row.recived .message::after {
+    border-right: 8px solid #3f4241;
+}
+
+.dark-mode .message-row.sent .message {
+    background: #3b6e59;
+    color: #fff;
+}
+
+.message-row.sent .message::after {
+    border-left: 8px solid #3b6e59;
+
+}
