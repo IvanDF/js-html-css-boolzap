@@ -1,191 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BoolzApp</title>
     <!-- ICON -->
-    <link rel="icon" href="./img/icons/favicon.png">
+    <link rel="icon" href="./img/icons/favicon.png" />
     <!-- FONT -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
     <!-- FONTAWESOME -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
     <!-- MAIN STLE -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
     <!-- DARK MODE -->
-    <link rel="stylesheet" href="./css/dark-mode.css">
+    <link rel="stylesheet" href="./css/dark-mode.css" />
     <!-- VUE / dev. script -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- BOOLZAP WEB-APP -->
     <div id="boolzap" :class="['container', darkMode ? 'dark-mode' : '']">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- SIDEBAR HEADER -->
+        <div class="h-list-center bg-light-gray sidebar-header">
+          <a class="h-list-center left" href="#">
+            <img
+              class="avatar circle"
+              :src="'./img/users/avatar' + user.avatar + '.jpg'"
+              :alt="user.name"
+            />
+            <span> Nuovo Utente </span>
+          </a>
+          <ul class="right list-none h-list-center">
+            <li>
+              <a href="#">
+                <i class="icon-light icon-medium fas fa-circle-notch"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-light icon-medium fas fa-comment-alt"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-light icon-medium fas fa-ellipsis-v"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" @click="setDarkMode()">
+                <i class="icon-light icon-medium fas fa-adjust"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
+        <!-- SIDEBAR NOTIFICATION ALERT -->
+        <div class="h-list-center notification-alert">
+          <ul class="list-none h-list-center">
+            <li>
+              <i class="icon-medium circle fas fa-bell-slash"></i>
+            </li>
+            <li>
+              Ricevi notifiche di nuovi messaggi
+              <a href="#"> Attiva notifiche desktop </a>
+            </li>
+          </ul>
+        </div>
 
-            <!-- SIDEBAR HEADER -->
-            <div class="h-list-center bg-light-gray sidebar-header">
-                <a class="h-list-center left" href="#">
-                    <img class="avatar circle" :src="'./img/users/avatar' + user.avatar + '.jpg'" :alt="user.name">
-                    <span> Nuovo Utente </span>
-                </a>
-                <ul class="right list-none h-list-center">
-                    <li>
-                        <a href="#">
-                            <i class="icon-light icon-medium fas fa-circle-notch"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-light icon-medium fas fa-comment-alt"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-light icon-medium fas fa-ellipsis-v"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" @click="darkMode = !darkMode">
-                            <i class="icon-light icon-medium fas fa-adjust"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <!-- SEARCH BAR -->
+        <div class="search">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Cerca o inizia una nuova chat"
+            v-model="filter"
+            @keyup="searchUser"
+          />
+          <button class="icon-light"></button>
+        </div>
 
-            <!-- SIDEBAR NOTIFICATION ALERT -->
-            <div class="h-list-center notification-alert">
-                <ul class="list-none h-list-center">
-                    <li>
-                        <i class="icon-medium circle fas fa-bell-slash"></i>
-                    </li>
-                    <li>
-                        Ricevi notifiche di nuovi messaggi
-                        <a href="#"> Attiva notifiche desktop </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- SEARCH BAR -->
-            <div class="search">
-                <input type="text" 
-                        name="search" 
-                        id="search" 
-                        placeholder="Cerca o inizia una nuova chat"
-                        v-model="filter"
-                        @keyup="searchUser"
+        <!-- SIDEBAR USERS -->
+        <div class="sidebar-users">
+          <!-- USERS CONTAINER -->
+          <div class="users-container">
+            <div class="users-scrollable">
+              <ul class="list-none">
+                <!-- LIST FROM JS -->
+                <li
+                  v-for="(contact, index) in contacts"
+                  v-show="contact.visible == true"
+                  @click="activeUser(index)"
+                  :class="[ 'users-list', index == indexUser ? 'user-active' : '' ]"
                 >
-                <button class="icon-light">
-                </button>
-            </div>
-
-            <!-- SIDEBAR USERS -->
-            <div class="sidebar-users">
-                    <!-- USERS CONTAINER -->
-                    <div class="users-container">
-                        <div class="users-scrollable">
-                            <ul class="list-none">
-                                <!-- LIST FROM JS -->
-                                <li 
-                                v-for="(contact, index) in contacts"
-                                v-show="contact.visible == true"
-                                @click="activeUser(index)"
-                                :class="[ 'users-list', index == indexUser ? 'user-active' : '' ]" 
-                                > 
-                                    <a class="h-list-center" href="#">
-                                        <img class="avatar-xl circle" :src="`./img/users/avatar${contact.avatar}.jpg`" :alt="contact.name">
-                                        <span class="contact-info">
-                                            <p> {{ contact.name }} </p>
-                                            <p class="message-preview"> {{ lastMessage(index) }} </p>
-                                            <span class="last-access"> {{ contact.lastAccess }} </span>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                <!-- </div> -->
-            </div>
-
-        </aside>
-
-        <!-- CHAT CONTAINER -->
-        <main class="chat-container">
-
-            <!-- CHAT HEADER -->
-            <div class="h-list-center bg-light-gray chat-header">
-                <a class="h-list-center" href="#">
-                    <img class="avatar circle" 
-                         :src="`./img/users/avatar${contacts[indexUser].avatar}.jpg`" :alt="contacts[indexUser].name">
-                    <span class="user-info">
-                        <p class="name"> {{contacts[indexUser].name}} </p>
-                        <p class="access"> Ultimo accesso oggi alle {{contacts[indexUser].lastAccess}} </p>
+                  <a class="h-list-center" href="#">
+                    <img
+                      class="avatar-xl circle"
+                      :src="`./img/users/avatar${contact.avatar}.jpg`"
+                      :alt="contact.name"
+                    />
+                    <span class="contact-info">
+                      <p>{{ contact.name }}</p>
+                      <p class="message-preview">{{ lastMessage(index) }}</p>
+                      <span class="last-access">
+                        {{ contact.lastAccess }}
+                      </span>
                     </span>
-                </a>
-                <ul class="right list-none h-list-center">
-                    <li>
-                        <a href="#">
-                            <i class="icon-light icon-medium fas fa-search"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-light icon-medium fas fa-paperclip"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-light icon-medium fas fa-ellipsis-v"></i>
-                        </a>
-                    </li>
-                </ul>
+                  </a>
+                </li>
+              </ul>
             </div>
+          </div>
+          <!-- </div> -->
+        </div>
+      </aside>
 
-            <!-- MAIN CHAT -->
-            <div class=" main-chat ">
-                <div class="chat-scrollable">
-                    <div class="fix-bottom-scrollable">
+      <!-- CHAT CONTAINER -->
+      <main class="chat-container">
+        <!-- CHAT HEADER -->
+        <div class="h-list-center bg-light-gray chat-header">
+          <a class="h-list-center" href="#">
+            <img
+              class="avatar circle"
+              :src="`./img/users/avatar${contacts[indexUser].avatar}.jpg`"
+              :alt="contacts[indexUser].name"
+            />
+            <span class="user-info">
+              <p class="name">{{contacts[indexUser].name}}</p>
+              <p class="access">
+                Ultimo accesso oggi alle {{contacts[indexUser].lastAccess}}
+              </p>
+            </span>
+          </a>
+          <ul class="right list-none h-list-center">
+            <li>
+              <a href="#">
+                <i class="icon-light icon-medium fas fa-search"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-light icon-medium fas fa-paperclip"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon-light icon-medium fas fa-ellipsis-v"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-                        <!-- MESSAGES - FROM JS -->
-                        <div v-for=" messageInfo in contacts[indexUser].messages "
-                             :class=" `message-row ${messageInfo.status}` "
-                        >
-                            <div class="message" ref="message">
-                                <p>{{ messageInfo.message }}</p>
-                                <span class="date">{{ messageInfo.date }}</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-
-                    </div>
+        <!-- MAIN CHAT -->
+        <div class="main-chat">
+          <div class="chat-scrollable">
+            <div class="fix-bottom-scrollable">
+              <!-- MESSAGES - FROM JS -->
+              <div
+                v-for=" messageInfo in contacts[indexUser].messages "
+                :class=" `message-row ${messageInfo.status}` "
+              >
+                <div class="message" ref="message">
+                  <p>{{ messageInfo.message }}</p>
+                  <span class="date">{{ messageInfo.date }}</span>
+                  <i class="fas fa-chevron-down"></i>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
 
-            <!-- CHAT FOOTER -->
-            <div class="chat-footer">
-                <a href="#">
-                    <i class="icon-dark icon-big far fa-smile"></i>
-                </a>
-                <input type="text" 
-                        name="message" 
-                        id="message" 
-                        placeholder="Scrivi un messaggio"
-                        @keyup.enter="sendMessage"
-                        v-model.trim="messageSent"
-                        >
-                <a href="#">
-                    <i class="icon-dark icon-big fas fa-microphone"></i>
-                </a>
-            </div>
-        </main>
+        <!-- CHAT FOOTER -->
+        <div class="chat-footer">
+          <a href="#">
+            <i class="icon-dark icon-big far fa-smile"></i>
+          </a>
+          <input
+            type="text"
+            name="message"
+            id="message"
+            placeholder="Scrivi un messaggio"
+            @keyup.enter="sendMessage"
+            v-model.trim="messageSent"
+          />
+          <a href="#">
+            <i class="icon-dark icon-big fas fa-microphone"></i>
+          </a>
+        </div>
+      </main>
     </div>
 
     <!-- DAY JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.6/dayjs.min.js"></script>
     <!-- MAIN STYLE -->
     <script src="./js/main.js"></script>
-</body>
+  </body>
 </html>
